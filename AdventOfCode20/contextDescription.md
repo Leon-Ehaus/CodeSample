@@ -7,6 +7,6 @@ A sample input for each day can also be found in the corresponding inputDayX.txt
 -------------------------------------------------------------------------------------------------------------------
 Deutsch:
 Dies ist mein Code für das jährliche Advent of Code von 2020.
-Ich benutze Python für dieses Projekt aufgrund der einfachen Verwendung für data analysis und um die Sprache besser kennenzulernen.
+Ich benutze Python für dieses Projekt aufgrund der einfachen Verwendung für data analysis und, um die Sprache besser kennenzulernen.
 Die Problembeschreibung für den jeweiligen Tag befindet sich in DayX.md und der entsprechende Code in DayX.py.
 Ein Beispielinput für jeden Tag befindet sich in der entsprechenden inputDayX.txt Datei.
