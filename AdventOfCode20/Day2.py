@@ -7,6 +7,9 @@ def partOne(inputStringArr) -> int:
 
 
 def checkIfVaildOne(inputString) -> bool:
+    """checks if the input string is a line for a vaild password according to part One"""
+    #the string has to be constructed after the guidlines of the problem description
+    #spliting the input String into the corresponding parts
     splitString = inputString.split(":")
     passwordString = splitString[1].strip()
     relevantChar = splitString[0][-1]
@@ -25,6 +28,9 @@ def partTwo(inputStringArr) -> int:
 
 
 def checkIfVaildTwo(inputString):
+    """checks if the input string is a line for a vaild password according to part Two"""
+    #the string has to be constructed after the guidlines of the problem description
+    #spliting the input String into the corresponding parts
     splitString = inputString.split(":")
     passwordString = splitString[1].strip()
     relevantChar = splitString[0][-1]

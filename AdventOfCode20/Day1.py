@@ -17,7 +17,9 @@ def partTwo(inputStringArr) -> int:
             return inputIntArr[i] * sumPair[0] * sumPair[1]
 
 
+
 def findSumPairForTarget(inputIntArr, target) -> (int, int):
+    """finds a pair of int values in a sorted list that add to the target"""
     lowerSearchBound = 0
     upperSearchBound = len(inputIntArr) - 1
     firstSummand = 0

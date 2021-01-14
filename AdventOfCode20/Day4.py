@@ -1,4 +1,4 @@
-def partOne(inputString):
+def partOne(inputString)-> int:
 
     inputString = inputString.split("\n\n")
     countValid = 0
@@ -37,27 +37,30 @@ def partTwo(inputString) -> int:
     return countValid
 
 
-def keyCheck(x):
+def keyCheck(field)-> bool:
+    """checks if the field has a valid value according to the problem description"""
     return{
-        'byr': intRangeCheck(x[1], 1920, 2002),
-        'iyr': intRangeCheck(x[1], 2010, 2020),
-        'eyr': intRangeCheck(x[1], 2020, 2030),
-        'hgt': hgt(x[1]),
-        'hcl': hcl(x[1]),
-        'ecl': ecl(x[1]),
-        'pid': pid(x[1]),
+        'byr': intRangeCheck(field[1], 1920, 2002),
+        'iyr': intRangeCheck(field[1], 2010, 2020),
+        'eyr': intRangeCheck(field[1], 2020, 2030),
+        'hgt': hgt(field[1]),
+        'hcl': hcl(field[1]),
+        'ecl': ecl(field[1]),
+        'pid': pid(field[1]),
         'cid': True
-    }.get(x[0], False)
+    }.get(field[0], False)
 
 
-def intRangeCheck(string, minVal, maxVal):
+def intRangeCheck(string, minVal, maxVal)-> bool:
+    """checks if the int value in string is between (inclusive) minVal and maxVal"""
     try:
         return(minVal <= int(string) <= maxVal)
     except ValueError:
         return False
 
 
-def hgt(string):
+def hgt(string)-> bool:
+    """checks if string is a vaild value of hgt according to the problem description"""
     stringEnd = string[-2:]
     if stringEnd == "cm":
         return intRangeCheck(string[:-2], 150, 193)
@@ -67,7 +70,8 @@ def hgt(string):
         return False
 
 
-def hcl(string):
+def hcl(string)-> bool:
+    """checks if string is a vaild value of hcl according to the problem description"""
     if string[0] == '#':
         try:
             int(string[1:], 16)
@@ -77,11 +81,13 @@ def hcl(string):
     return False
 
 
-def ecl(string):
+def ecl(string)-> bool:
+    """checks if string is a vaild value of ecl according to the problem description"""
     return string in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 
 
-def pid(string):
+def pid(string)-> bool:
+    """checks if string is a vaild value of pid according to the problem description"""
     return len(string) == 9 and intRangeCheck(string, 0, 999999999)
 
 
