@@ -1,11 +1,12 @@
-def partOne(inputStringArr)-> int:
+def partOne(inputStringArr) -> int:
     countValid = 0
     for x in inputStringArr:
-        if checkIfVaild(x):
+        if checkIfVaildOne(x):
             countValid += 1
     return countValid
 
-def checkIfVaild(inputString)-> bool:
+
+def checkIfVaildOne(inputString) -> bool:
     splitString = inputString.split(":")
     passwordString = splitString[1].strip()
     relevantChar = splitString[0][-1]
@@ -15,9 +16,25 @@ def checkIfVaild(inputString)-> bool:
     return (count >= charCount[0] and count <= charCount[1])
 
 
+def partTwo(inputStringArr) -> int:
+    countValid = 0
+    for x in inputStringArr:
+        if checkIfVaildTwo(x):
+            countValid += 1
+    return countValid
+
+
+def checkIfVaildTwo(inputString):
+    splitString = inputString.split(":")
+    passwordString = splitString[1].strip()
+    relevantChar = splitString[0][-1]
+    charPos = splitString[0][:-2].split("-")
+    charPos = list(map(int, charPos))
+    return (relevantChar == passwordString[charPos[0]-1]) != (relevantChar == passwordString[charPos[1]-1])
+
 
 with open('AdventOfCode20/input.txt') as f:
     inputArr = f.readlines()
 
 inputArr = [x.strip() for x in inputArr]
-print(partOne(inputArr))
+print(partTwo(inputArr))
