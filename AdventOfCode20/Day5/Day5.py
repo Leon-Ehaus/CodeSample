@@ -29,7 +29,7 @@ def partTwo(inputStringArr) -> int:
     return 0
 
 
-with open('AdventOfCode20/input.txt') as f:
+with open('AdventOfCode20/Day5/inputDay5.txt') as f:
     inputArr = f.readlines()
 
 inputArr = [x.strip() for x in inputArr]

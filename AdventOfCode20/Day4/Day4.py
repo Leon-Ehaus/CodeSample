@@ -91,7 +91,7 @@ def pid(string) -> bool:
     return len(string) == 9 and intRangeCheck(string, 0, 999999999)
 
 
-with open('AdventOfCode20/input.txt') as f:
+with open('AdventOfCode20/Day4/inputDay4.txt') as f:
     inputString = f.read()
 
 print("Solution part one: ", partOne(inputString),

@@ -43,7 +43,7 @@ def findSumPairForTarget(inputIntArr, target) -> (int, int):
     return (firstSummand, secondSummand)
 
 
-with open('AdventOfCode20/input.txt') as f:
+with open('AdventOfCode20/Day1/inputDay1.txt') as f:
     inputArr = f.readlines()
 
 inputArr = [x.strip() for x in inputArr]

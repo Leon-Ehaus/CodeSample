@@ -39,7 +39,7 @@ def checkIfVaildTwo(inputString):
     return (relevantChar == passwordString[charPos[0]-1]) != (relevantChar == passwordString[charPos[1]-1])
 
 
-with open('AdventOfCode20/input.txt') as f:
+with open('AdventOfCode20/Day2/inputDay2.txt') as f:
     inputArr = f.readlines()
 
 inputArr = [x.strip() for x in inputArr]

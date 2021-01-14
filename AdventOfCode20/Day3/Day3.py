@@ -26,7 +26,7 @@ def partTwoHelper(inputMap, offset) -> int:
     return treeCount
 
 
-with open('AdventOfCode20/input.txt') as f:
+with open('AdventOfCode20/Day3/inputDay3.txt') as f:
     inputArr = f.readlines()
 
 inputArr = [x.strip() for x in inputArr]
