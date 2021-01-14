@@ -1,12 +1,23 @@
 
-def partOne(inputStringArr)-> int:
+def partOne(inputStringArr) -> int:
     inputIntArr = [int(num) for num in inputStringArr]
-    sumPair = findSumPairForTarget(inputIntArr,2020)
+    inputIntArr.sort()
+    sumPair = findSumPairForTarget(inputIntArr, 2020)
     return sumPair[0] * sumPair[1]
 
 
-def findSumPairForTarget(inputIntArr, target)-> (int,int):
+def partTwo(inputStringArr) -> int:
+    inputIntArr = [int(num) for num in inputStringArr]
     inputIntArr.sort()
+    for i in range(len(inputIntArr)):
+        target = 2020 - inputIntArr[i]
+        sumPair = findSumPairForTarget(
+            inputIntArr[:i] + inputIntArr[i+1:], target)
+        if sumPair != (-1, -1):
+            return inputIntArr[i] * sumPair[0] * sumPair[1]
+
+
+def findSumPairForTarget(inputIntArr, target) -> (int, int):
     lowerSearchBound = 0
     upperSearchBound = len(inputIntArr) - 1
     firstSummand = 0
@@ -25,15 +36,9 @@ def findSumPairForTarget(inputIntArr, target)-> (int,int):
             break
 
         if lowerSearchBound >= upperSearchBound:
-            print("No matching numbers for the target found")
-            break
+            return (-1, -1)
 
-    return (firstSummand,secondSummand)
-
-
-
-
-
+    return (firstSummand, secondSummand)
 
 
 with open('AdventOfCode20/input.txt') as f:
@@ -41,4 +46,4 @@ with open('AdventOfCode20/input.txt') as f:
 
 inputArr = [x.strip() for x in inputArr]
 
-print(partOne(inputArr))
+print(partTwo(inputArr))
