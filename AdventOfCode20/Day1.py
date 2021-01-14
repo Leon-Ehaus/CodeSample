@@ -46,4 +46,5 @@ with open('AdventOfCode20/input.txt') as f:
 
 inputArr = [x.strip() for x in inputArr]
 
-print(partTwo(inputArr))
+print("Solution part one: ", partOne(inputArr),
+      "\nSolution part two: ", partTwo(inputArr))
