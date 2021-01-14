@@ -1,7 +1,8 @@
 English:
 This is my code for the anual Advent of Code from 2020.
 I chose python for its ease of use for data analysis and to get to know the language.
-The problemdescription for each day can be found in the corresponding DayX.md file and the code in the DayX.py file
+The problem description for each day can be found in the corresponding DayX.md file and the code in the DayX.py file
+A sample input for each day can also be found in the corresponding inputDayX.txt file
 
 -------------------------------------------------------------------------------------------------------------------
 Deutsch:

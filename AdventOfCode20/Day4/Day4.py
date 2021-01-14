@@ -1,4 +1,4 @@
-def partOne(inputString)-> int:
+def partOne(inputString) -> int:
 
     inputString = inputString.split("\n\n")
     countValid = 0
@@ -37,7 +37,7 @@ def partTwo(inputString) -> int:
     return countValid
 
 
-def keyCheck(field)-> bool:
+def keyCheck(field) -> bool:
     """checks if the field has a valid value according to the problem description"""
     return{
         'byr': intRangeCheck(field[1], 1920, 2002),
@@ -51,7 +51,7 @@ def keyCheck(field)-> bool:
     }.get(field[0], False)
 
 
-def intRangeCheck(string, minVal, maxVal)-> bool:
+def intRangeCheck(string, minVal, maxVal) -> bool:
     """checks if the int value in string is between (inclusive) minVal and maxVal"""
     try:
         return(minVal <= int(string) <= maxVal)
@@ -59,7 +59,7 @@ def intRangeCheck(string, minVal, maxVal)-> bool:
         return False
 
 
-def hgt(string)-> bool:
+def hgt(string) -> bool:
     """checks if string is a vaild value of hgt according to the problem description"""
     stringEnd = string[-2:]
     if stringEnd == "cm":
@@ -70,7 +70,7 @@ def hgt(string)-> bool:
         return False
 
 
-def hcl(string)-> bool:
+def hcl(string) -> bool:
     """checks if string is a vaild value of hcl according to the problem description"""
     if string[0] == '#':
         try:
@@ -81,12 +81,12 @@ def hcl(string)-> bool:
     return False
 
 
-def ecl(string)-> bool:
+def ecl(string) -> bool:
     """checks if string is a vaild value of ecl according to the problem description"""
     return string in ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth']
 
 
-def pid(string)-> bool:
+def pid(string) -> bool:
     """checks if string is a vaild value of pid according to the problem description"""
     return len(string) == 9 and intRangeCheck(string, 0, 999999999)
 
