@@ -26,6 +26,7 @@ def partTwo(inputString) -> int:
 
 
 def countAswered(groupString) -> int:
+    """Counts how many different characters are present in all lines of the groupString"""
     groupList = groupString.split("\n")
     #groupList = groupList.sort(lambda x,y: cmp(len(x), len(y)))
     count = 0
