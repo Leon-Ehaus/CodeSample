@@ -1,34 +1,22 @@
+import networkx as nx
+import matplotlib.pyplot as plt
+
+
 def partOne(inputStringArr) -> int:
-    ruleList = []
-    for x in inputStringArr:
-        singleRule = isollate(x)
-        ruleList = ruleList + [singleRule[::2]]
+    ruleGraph = determineWeightedGraph(inputStringArr)
 
-    possibleContainers = ["shiny gold bag"]
-    for container in possibleContainers:
-        possibleContainers = searchForTransitiveContainer(
-            possibleContainers, ruleList, container)
-
-    # -1 because shiny gold bag is in the possibleContainers but not a vaild answer
-    return len(possibleContainers)-1
+    reachableNodes = nx.ancestors(ruleGraph, "shiny gold bag")
+    return len(reachableNodes)
 
 
-def searchForTransitiveContainer(visitedBags, ruleList, bag) -> list:
-    """searches in ruleList for bags wich can contain the bag direktly and arent visited already."""
-    for x in ruleList:
-        if bag in x[1:]:
-            if x[0] not in visitedBags:
-                visitedBags.append(x[0])
-
-    return visitedBags
-
-
-def isollate(lineString):
-    """splis the lineString into an array with the number and bag types"""
+def isollate(lineString) -> list:
+    """splis the lineString into an array with the bag number and types"""
     lineString = lineString.replace("bags", "bag")
     lineString = lineString.replace(".", "")
     lineStringArr = lineString.split("contain")
     root = lineStringArr[0].strip()
+    if lineStringArr[1] == " no other bag":
+        return [root]
     lineStringArr = [x.strip() for x in lineStringArr[1].split(",")]
     leafList = []
     for x in lineStringArr:
@@ -38,7 +26,33 @@ def isollate(lineString):
 
 
 def partTwo(inputStringArr) -> int:
-    return 0
+    ruleGraph = determineWeightedGraph(inputStringArr)
+    weight = determineTotalWeight(ruleGraph, "shiny gold bag")
+
+    return weight
+
+
+def determineTotalWeight(graph, node) -> int:
+    """determines the weight of the node (how many bags are included in one)"""
+    neighbors = nx.neighbors(graph, node)
+    weight = 0
+    for x in neighbors:
+        localweight = int(graph[node][x]["weight"])
+        weight += localweight * determineTotalWeight(graph, x) + localweight
+
+    return weight
+
+
+def determineWeightedGraph(inputStringArr):
+    """creates a weighted directed graph representing the rules from inputStringArr"""
+    ruleGraph = nx.DiGraph()
+
+    for line in inputStringArr:
+        rule = isollate(line)
+        for weight, edge in zip(rule[1::2], rule[2::2]):
+            ruleGraph.add_edge(rule[0], edge, weight=int(weight))
+
+    return ruleGraph
 
 
 with open('AdventOfCode20/Day7/inputDay7.txt') as f:
