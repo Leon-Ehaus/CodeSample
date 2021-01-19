@@ -39,8 +39,22 @@ def findSumPairForTarget(inputIntArr, target) -> (int, int):
 
 
 def partTwo(inputIntArr) -> int:
-
-    return 0
+    target = partOne(inputIntArr)
+    setStartIndex = 0
+    setEndIndex = 0
+    sumValue = inputIntArr[0]
+    while True:
+        if target > sumValue:
+            setEndIndex += 1
+            sumValue += inputIntArr[setEndIndex]
+        elif target < sumValue:
+            sumValue -= inputIntArr[setStartIndex]
+            setStartIndex += 1
+        else:
+            sumSet = inputIntArr[setStartIndex:setEndIndex]
+            sumSet = sorted(sumSet)
+            return sumSet[0] + sumSet[-1]
+    return -1
 
 
 with open('AdventOfCode20/Day9/inputDay9.txt') as f:
